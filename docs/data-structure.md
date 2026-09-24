@@ -26,15 +26,12 @@
 
 **データ**
 
-| 項目   | 型     | 内容                          |
-| ------ | ------ | ----------------------------- |
-| taskId | string | Task Settingsから受け取ったID |
-
-- タスク完了のチェックは状態管理する。
+- Task Settingsから受け取ったデータを参照する。
 
 **関係性**
 
 - Task SettingsのtaskIdを参照して、対応するtaskTitleを表示する。
+- タスク完了のチェックは状態管理する。
 - 完了したタスクの個数をプログレスバーに反映する。
 
 ## Pomodoro Settings
@@ -45,18 +42,19 @@
 
 **データ**
 
-| 項目       | 型     | 内容              |
-| ---------- | ------ | ----------------- |
-| id         | string | 設定の識別ID      |
-| focusTime  | number | Focus timeの時間  |
-| focusMusic | string | Focus musicの音楽 |
-| shortBreak | number | Short breakの時間 |
-| breakMusic | string | Short breakの音楽 |
-| Session    | number | セット回数        |
+| 項目       | 型     | 内容                            |
+| ---------- | ------ | ------------------------------- |
+| id         | string | 設定の識別ID                    |
+| focusTime  | number | Focus timeの時間                |
+| focusMusic | string | Focus中に再生する音楽のID       |
+| shortBreak | number | Short breakの時間               |
+| breakMusic | string | Short break中に再生する音楽のID |
+| Session    | number | セット回数                      |
 
 **関係性**
 
 - 登録したデータをPomodoroに反映する。
+- Musicから音楽データを受け取り表示する。
 
 ## Pomodoro
 
@@ -133,62 +131,123 @@
 - Progress historyから受け取った累計学習時間と達成率を反映する。
 - goalTimeをProgress historyに渡す。
 
-##
+## Weekly Schedule
 
 **目的**
 
-- a
+- 週間スケジュールの管理とスケジュールの編集。
 
 **データ**
 
-| 項目 | 型  | 内容 |
-| ---- | --- | ---- |
-|      |     |      |
-|      |     |      |
+| 項目         | 型     | 内容                   |
+| ------------ | ------ | ---------------------- |
+| id           | string | スケジュールの識別ID   |
+| date         | string | 記録対象の日付         |
+| scheduleName | string | スケジュールのタイトル |
+| startTime    | number | スケジュールの開始時間 |
+| duration     | number | スケジュールの継続時間 |
 
 **関係性**
 
-- a
+- Schedule Calendarから日付を参照し週間スケジュールに反映する。
+- Scheduleデータは日単位で管理する。
 
-##
+## Today's Schedule
 
 **目的**
 
-- a
+- 今日のスケジュールを確認。
 
 **データ**
 
-| 項目 | 型  | 内容 |
-| ---- | --- | ---- |
-|      |     |      |
-|      |     |      |
+- Weekly Scheduleのデータを使用する。
 
 **関係性**
 
-- a
+- dateから今日の日付のスケジュールを取得して表示する。
 
-##
+## Calender (Schedule)
 
 **目的**
 
-- a
+- スケジュール用カレンダーの管理
 
 **データ**
 
-| 項目 | 型  | 内容 |
-| ---- | --- | ---- |
-|      |     |      |
-|      |     |      |
+- Scheduleのデータを使用する。
 
 **関係性**
 
-- a
+- Scheduleのdateを参照して、カレンダーにデータの状態を反映する。
+
+## Calender (Progress)
+
+**目的**
+
+- Progress History用カレンダーの管理
+
+**データ**
+
+- Progress Historyのデータを使用する。
+
+**関係性**
+
+- Progress Historyのdateを参照して、カレンダーにデータの状態を反映する。
+
+## Music player
+
+**目的**
+
+- Spotifyの連携。
+
+**データ**
+
+- MVPでは実装しない。
+
+**関係性**
+
+- Spotifyからアカウント情報を取得しSpotifyのUIを表示する。
+
+## Music (dashboard)
+
+**目的**
+
+- デフォルトの音楽再生
+
+**データ**
+
+| 項目       | 型     | 内容               |
+| ---------- | ------ | ------------------ |
+| id         | string | 音楽の識別ID       |
+| musicTitle | string | 音楽のタイトル     |
+| musicSrc   | string | 音楽ファイルのパス |
+
+**関係性**
+
+- デフォルトで用意された音楽データを受け取り再生する。
+- 音楽の再生状況は状態で管理する。
+
+## Current Date and Time
+
+**目的**
+
+- 日付と時計を表示する
+
+**データ**
+
+- MVPでは天気APIと連携しない。
+
+**関係性**
+
+- 現在の日付と時刻を取得して表示する。
+- 各ページで共通コンポーネントとして利用する。
+- 天気APIと連携しアイコンを表示する。
 
 ##
 
 **目的**
 
-- a
+- あ
 
 **データ**
 
