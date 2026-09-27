@@ -56,80 +56,121 @@
 **Pomodoro**
 
 - 役割
-  - a
+  - Focus time、ShortBreak、セット回数の表示と経過時間をプログレスバーに表示する。
 
 - 構成
-  - a
+  - FocusElapsedTime
+  - CompleteSession
+  - ElapsedTimeBar
+
+- 状態
+  - 経過時間とセット回数が進行に応じてプログレスバーが変化する。
 
 **Music**
 
 - 役割
-  - a
+  - 設定された音楽を再生し、「楽曲タイトル」「再生状況」「再生コントロール」を表示する。
 
 - 構成
-  - a
+  - MediaControls
+  - MediaBar
+
+- 状態
+  - 再生中の楽曲とコントロールがプログレスバーに反映される。
 
 ## Schedule / Tasks Page
 
 **Weekly Schedule**
 
 - 役割
-  - a
+  - スケジュールのタイムラインとブロックの表示と表示範囲の設定。
 
 - 構成
-  - a
+  - ScheduleTimeBlock
+  - ScheduleTimeLine
+  - DisplayTimeSetting
+
+- 状態
+  - DisplayTimeSettingの設定に応じてタイムラインの表示範囲が変化する。
+  - スケジュールの開始時間と継続時間に応じてScheduleTimeBlockの位置・サイズが変化する。
 
 **Task Settings**
 
 - 役割
-  - a
+  - タスクの追加・削除と登録中のタスクを表示
 
 - 構成
-  - a
+  - TaskList
+  - TaskItem
+  - AddTaskForm
 
-**Schedule Calender**
+- 状態
+  - 登録済みタスクの有無に応じた表示の変化。
+
+**Schedule Calendar**
 
 - 役割
-  - a
+  - スケジュール用の月間カレンダーの表示
 
 - 構成
-  - a
+  - ScheduleCalendar
+
+- データ
+
+| 項目       | 型      | 内容                   |
+| ---------- | ------- | ---------------------- |
+| registered | boolean | スケジュールの登録状態 |
+
+- 状態
+  - 月間カレンダーにスケジュールの登録状態を表示する。
 
 ## Study Log Page
 
 **Weekly Progress**
 
 - 役割
-  - a
+  - 週間の学習進捗グラフと、週間累計学習時間、週間平均学習時間の表示。
 
 - 構成
-  - a
+  - ProgressBarChart
+  - WeeklyStudyTime
+  - DisplayDaySetting
+
+- 状態
+  - 選択した日付を基準に7日間のProgressBarChartとWeeklyStudyTimeの表示が変化する。
 
 **Progress History**
 
 - 役割
-  - a
+  - 月間カレンダーに進捗データの登録・削除をする。
 
 - 構成
-  - a
+  - ProgressCalendar
+  - DailyProgress
+
+- 状態
+  - DailyProgressの登録状態に応じて、ProgressCalendarの表示が変化する。
 
 ## Pomodoro & Music Page
 
 **Pomodoro Setting**
 
 - 役割
-  - a
+  - Pomodoroの時間設定と音楽の選択。
 
 - 構成
-  - a
+  - PomodoroSetting
+
+- 状態
+  - PomodoroSettingの設定内容に応じてPomodoroの表示が変化する。
 
 **Music player**
 
 - 役割
-  - a
+  - Spotifyの連携設定。
 
 - 構成
-  - a
+  - MVPでは実装しない
 
 ## Common Components
 
