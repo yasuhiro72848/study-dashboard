@@ -10,5 +10,7 @@ export interface DailyProgress {
 
 export interface CurrentProgress {
   progressDate: DailyProgress['date'];
+  completeTime: DailyProgress['completeTime'];
   goalTimeSetting: number;
+  achievementRate: DailyProgress['achievementRate'];
 }

@@ -1,4 +1,4 @@
-export interface DailySchedule {
+export interface Schedule {
   id: string;
   date: string;
   scheduleName: string;
@@ -7,6 +7,14 @@ export interface DailySchedule {
 }
 
 export interface ScheduleRegistered {
-  scheduleDate: DailySchedule['date'];
+  scheduleDate: Schedule['date'];
   registered: boolean;
 }
+
+// WeeklySchedule 実装時に必要になる可能性
+// WeeklySchedule: DailySchedule[]
+
+// interface DailySchedule {
+//   schedules: Schedule[];
+//   id: string
+// }
