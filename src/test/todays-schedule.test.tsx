@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { Schedule } from '@/types/schedule';
-import { getDailySchedule } from './todays-schedule';
+import { getTodaySchedule } from './todays-schedule';
 
 const schedules: Schedule[] = [
   {
@@ -27,7 +27,7 @@ const schedules: Schedule[] = [
 ];
 
 test('設定済みの今日のスケジュールが反映される', () => {
-  const result = getDailySchedule(schedules, '10/04');
+  const result = getTodaySchedule(schedules, '10/04');
   expect(result).toEqual([
     {
       id: 'schedule-1',

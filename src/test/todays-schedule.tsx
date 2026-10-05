@@ -1,6 +1,6 @@
 import { Schedule } from '@/types/schedule';
 
-export function getDailySchedule(
+export function getTodaySchedule(
   schedules: Schedule[],
   date: string,
 ): Schedule[] {
