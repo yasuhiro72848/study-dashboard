@@ -11,10 +11,7 @@ export interface ScheduleRegistered {
   registered: boolean;
 }
 
-// WeeklySchedule 実装時に必要になる可能性
-// WeeklySchedule: DailySchedule[]
-
-// interface DailySchedule {
-//   schedules: Schedule[];
-//   id: string
-// }
+export interface DailySchedule {
+  date: string;
+  schedules: Schedule[];
+}
