@@ -17,15 +17,30 @@ export function getTotalCompleteTime(progresses: DailyProgress[]) {
   );
 }
 
-export function getWeeklyAverageTime(totalCompleteTime: number, days: number) {
+export function getAverageTime(totalCompleteTime: number, days: number) {
   return days === 0 ? 0 : totalCompleteTime / days;
 }
 
+// 計算結果を日付に対応する必要がある
 export function getCumulativeTime(
   previousCompleteTime: number,
   currentCompleteTime: number,
 ) {
   return previousCompleteTime + currentCompleteTime;
+}
+
+export function getAchievementRate(progresses: DailyProgress[]) {
+  return progresses.map((progress) => ({
+    date: progress.date,
+    achievementRate: progress.achievementRate,
+  }));
+}
+
+export function getCompleteTime(progresses: DailyProgress[]) {
+  return progresses.map((progress) => ({
+    date: progress.date,
+    completeTime: progress.completeTime,
+  }));
 }
 
 // 記録が存在する場合の平均
