@@ -21,6 +21,13 @@ export function getWeeklyAverageTime(totalCompleteTime: number, days: number) {
   return days === 0 ? 0 : totalCompleteTime / days;
 }
 
+export function getCumulativeTime(
+  previousCompleteTime: number,
+  currentCompleteTime: number,
+) {
+  return previousCompleteTime + currentCompleteTime;
+}
+
 // 記録が存在する場合の平均
 // export function getDailyAverageTime(
 //   progresses: DailyProgress[],

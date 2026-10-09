@@ -3,6 +3,7 @@ import {
   getDateRange,
   getTotalCompleteTime,
   getWeeklyAverageTime,
+  getCumulativeTime,
 } from './weekly-progress';
 import { DailyProgress } from '@/types/progress';
 
@@ -46,9 +47,11 @@ test('週間の平均学習時間の計算', () => {
   expect(weeklyAverageTime).toBe(5 / 7);
 });
 
-// test('グラフ用の各日の平均学習時間の計算', () => {
-//   expect().toBe();
-// });
+test('グラフ用の各日の平均学習時間の計算', () => {
+  const todayCumulativeTime = getCumulativeTime(2, 3);
+  const cumulativeAverageTime = getWeeklyAverageTime(todayCumulativeTime, 3);
+  expect(cumulativeAverageTime).toBe(5 / 3);
+});
 
 // test('グラフ用の達成率をProgressHistoryから取得する', () => {
 //   expect().toBe();
