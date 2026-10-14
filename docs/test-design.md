@@ -54,6 +54,7 @@
 **Progress History**
 
 - CurrentProgressから設定済みのgoalTimeを取得する。
+- DailyProgressからgoalTimeを設定できる
 - PomodoroからcompleteTimeを取得する。
 - 達成率を計算する。
 - conditionを変更できる。
@@ -203,3 +204,12 @@ UIの操作と状態管理のみのため、テストから除外した。<br/>
 
 - 除外
   - すべての日付が選択できる。
+
+### 変更履歴 2026-10-14
+
+**ProgressHistory**
+
+CurrentProgressのデータ取得だけでは修正が効かないため、ProgressHistoryからgoalTimeの変更ができるように変更した。
+
+- 追加
+  - DailyProgressからgoalTimeを設定できる。
