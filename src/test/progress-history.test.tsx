@@ -1,14 +1,20 @@
 import { expect, test } from 'vitest';
 import { DailyProgress, CurrentProgress } from '@/types/progress';
-import { getDailyProgress, getGoalTime } from './progress-history';
+import {
+  getDailyProgress,
+  updateGoalTime,
+  changeGoalTime,
+  updateCompleteTime,
+  calculateAchievementRate,
+} from './progress-history';
 
-const progressHistories = [
+const progressHistories: DailyProgress[] = [
   {
     id: 'history-1',
     date: '10/14',
     completeTime: 2,
     goalTime: 2,
-    achievementRate: 2 / 2,
+    achievementRate: 0,
     condition: '',
     historyMemo: '',
   },
@@ -17,13 +23,13 @@ const progressHistories = [
     date: '10/15',
     completeTime: 6,
     goalTime: 3,
-    achievementRate: 3 / 6,
+    achievementRate: 0,
     condition: '',
     historyMemo: '',
   },
 ];
 
-const currentProgress = {
+const currentProgress: CurrentProgress = {
   progressDate: '10/14',
   completeTime: 3,
   goalTimeSetting: 6,
@@ -37,7 +43,7 @@ test('指定した日付からDailyProgressを呼び出す', () => {
     date: '10/14',
     completeTime: 2,
     goalTime: 2,
-    achievementRate: 2 / 2,
+    achievementRate: 0,
     condition: '',
     historyMemo: '',
   });
@@ -48,27 +54,46 @@ test('CurrentProgressから設定済みのgoalTimeを取得する', () => {
   if (!dailyProgress) {
     throw new Error('データがありません');
   }
-  const newDailyProgress = getGoalTime(dailyProgress, currentProgress);
+  const newDailyProgress = updateGoalTime(dailyProgress, currentProgress);
   expect(newDailyProgress).toEqual({
     id: 'history-1',
     date: '10/14',
     completeTime: 2,
     goalTime: 6,
-    achievementRate: 2 / 2,
+    achievementRate: 0,
     condition: '',
     historyMemo: '',
   });
 });
 
-// test('PomodoroからcompleteTimeを取得する', () => {
-//   expect().toBe();
-// });
+test('DailyProgressからgoalTimeを設定できる', () => {
+  const dailyProgress = getDailyProgress(progressHistories, '10/14');
+  if (!dailyProgress) {
+    throw new Error('データがありません');
+  }
+  const result = changeGoalTime(dailyProgress, 10);
+  expect(result.goalTime).toBe(10);
+});
 
-// test('DailyProgressからgoalTimeを設定できる', () => {
-//   expect().toBe();
-// });
+test('PomodoroからcompleteTimeを取得する', () => {
+  const dailyProgress = getDailyProgress(progressHistories, '10/14');
+  if (!dailyProgress) {
+    throw new Error('データがありません');
+  }
+  const result = updateCompleteTime(dailyProgress, 3);
+  expect(result.completeTime).toBe(3);
+});
 
-// test('達成率を計算する', () => {
+test('完了時間と目標時間から達成率を計算する', () => {
+  const dailyProgress = getDailyProgress(progressHistories, '10/14');
+  if (!dailyProgress) {
+    throw new Error('データがありません');
+  }
+  const result = calculateAchievementRate(dailyProgress);
+  expect(result).toEqual({ ...dailyProgress, achievementRate: 1 });
+});
+
+// test('目標時間が変更された場合の達成率を再計算する', () => {
 //   expect().toBe();
 // });
 
