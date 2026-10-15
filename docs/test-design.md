@@ -56,7 +56,8 @@
 - CurrentProgressから設定済みのgoalTimeを取得する。
 - DailyProgressからgoalTimeを設定できる
 - PomodoroからcompleteTimeを取得する。
-- 達成率を計算する。
+- 完了時間と目標時間から達成率を計算する。
+- 目標時間が変更された場合の達成率を再計算する。
 - conditionを変更できる。
 - historyMemoを変更できる。
 - 一日の進捗データをカレンダーに保存する。
@@ -213,3 +214,16 @@ CurrentProgressのデータ取得だけでは修正が効かないため、Progr
 
 - 追加
   - DailyProgressからgoalTimeを設定できる。
+
+### 変更履歴 2026-10-15
+
+**Progress History**
+
+目標時間の変更をProgressHistoryからも変更できるため、達成率の計算を2つのテストに分けた。
+
+- 変更前
+  - 達成率を計算する。
+
+- 変更後
+  - 完了時間と目標時間から達成率を計算する。
+  - 目標時間が変更された場合の達成率を再計算する。
