@@ -45,3 +45,40 @@ export function calculateAchievementRate(
     achievementRate: dailyProgress.completeTime / dailyProgress.goalTime,
   };
 }
+
+export function setCondition(
+  dailyProgress: DailyProgress,
+  condition: string,
+): DailyProgress {
+  return {
+    ...dailyProgress,
+    condition,
+  };
+}
+
+export function setHistoryMemo(
+  dailyProgress: DailyProgress,
+  historyMemo: string,
+): DailyProgress {
+  return {
+    ...dailyProgress,
+    historyMemo,
+  };
+}
+
+export function saveDailyProgress(
+  dailyProgresses: DailyProgress[],
+  newDailyProgress: DailyProgress,
+): DailyProgress[] {
+  const result = dailyProgresses.some(
+    (progress) => progress.date === newDailyProgress.date,
+  );
+
+  if (result) {
+    return dailyProgresses.map((progress) =>
+      progress.date === newDailyProgress.date ? newDailyProgress : progress,
+    );
+  }
+
+  return [...dailyProgresses, newDailyProgress];
+}

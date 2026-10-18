@@ -6,6 +6,9 @@ import {
   changeGoalTime,
   updateCompleteTime,
   calculateAchievementRate,
+  setCondition,
+  setHistoryMemo,
+  saveDailyProgress,
 } from './progress-history';
 
 const progressHistories: DailyProgress[] = [
@@ -36,7 +39,7 @@ const currentProgress: CurrentProgress = {
   achievementRate: 3 / 6,
 };
 
-test('指定した日付からDailyProgressを呼び出す', () => {
+test('一日の進捗データをカレンダーから取得する', () => {
   const dailyProgress = getDailyProgress(progressHistories, '10/14');
   expect(dailyProgress).toEqual({
     id: 'history-1',
@@ -93,22 +96,114 @@ test('完了時間と目標時間から達成率を計算する', () => {
   expect(result).toEqual({ ...dailyProgress, achievementRate: 1 });
 });
 
-// test('目標時間が変更された場合の達成率を再計算する', () => {
-//   expect().toBe();
-// });
+test('目標時間が変更された場合の達成率を再計算する', () => {
+  const dailyProgress = getDailyProgress(progressHistories, '10/14');
+  if (!dailyProgress) {
+    throw new Error('データがありません');
+  }
+  const updateDailyProgress = changeGoalTime(dailyProgress, 4);
+  const result = calculateAchievementRate(updateDailyProgress);
+  expect(result).toEqual({
+    ...updateDailyProgress,
+    achievementRate: 0.5,
+  });
+});
 
-// test('conditionを変更できる', () => {
-//   expect().toBe();
-// });
+test('conditionを変更できる', () => {
+  const dailyProgress = getDailyProgress(progressHistories, '10/14');
+  if (!dailyProgress) {
+    throw new Error('データがありません');
+  }
+  const result = setCondition(dailyProgress, '普通');
+  expect(result).toEqual({ ...dailyProgress, condition: '普通' });
+});
 
-// test('historyMemoを変更できる', () => {
-//   expect().toBe();
-// });
+test('historyMemoを変更できる', () => {
+  const dailyProgress = getDailyProgress(progressHistories, '10/14');
+  if (!dailyProgress) {
+    throw new Error('データがありません');
+  }
+  const result = setHistoryMemo(
+    dailyProgress,
+    '第3章を終えて、JavaScriptの基礎を終えた。',
+  );
+  expect(result).toEqual({
+    ...dailyProgress,
+    historyMemo: '第3章を終えて、JavaScriptの基礎を終えた。',
+  });
+});
 
-// test('一日の進捗データをカレンダーに保存する', () => {
-//   expect().toBe();
-// });
+test('一日の進捗データがカレンダーにあるならば更新する', () => {
+  const newDailyProgress: DailyProgress = {
+    id: 'history-1',
+    date: '10/14',
+    completeTime: 2,
+    goalTime: 4,
+    achievementRate: 0.5,
+    condition: 'good',
+    historyMemo: 'チュートリアルを一通り終えた。',
+  };
+  const result = saveDailyProgress(progressHistories, newDailyProgress);
+  expect(result).toEqual([
+    {
+      id: 'history-1',
+      date: '10/14',
+      completeTime: 2,
+      goalTime: 4,
+      achievementRate: 0.5,
+      condition: 'good',
+      historyMemo: 'チュートリアルを一通り終えた。',
+    },
+    {
+      id: 'history-2',
+      date: '10/15',
+      completeTime: 6,
+      goalTime: 3,
+      achievementRate: 0,
+      condition: '',
+      historyMemo: '',
+    },
+  ]);
+});
 
-// test('一日の進捗データをカレンダーから取得する', () => {
-//   expect().toBe();
-// });
+test('一日の進捗データがカレンダーにないならば追加する', () => {
+  const newDailyProgress: DailyProgress = {
+    id: 'history-3',
+    date: '10/16',
+    completeTime: 2,
+    goalTime: 4,
+    achievementRate: 0.5,
+    condition: 'good',
+    historyMemo: 'チュートリアルを復習した',
+  };
+  const result = saveDailyProgress(progressHistories, newDailyProgress);
+  expect(result).toEqual([
+    {
+      id: 'history-1',
+      date: '10/14',
+      completeTime: 2,
+      goalTime: 2,
+      achievementRate: 0,
+      condition: '',
+      historyMemo: '',
+    },
+    {
+      id: 'history-2',
+      date: '10/15',
+      completeTime: 6,
+      goalTime: 3,
+      achievementRate: 0,
+      condition: '',
+      historyMemo: '',
+    },
+    {
+      id: 'history-3',
+      date: '10/16',
+      completeTime: 2,
+      goalTime: 4,
+      achievementRate: 0.5,
+      condition: 'good',
+      historyMemo: 'チュートリアルを復習した',
+    },
+  ]);
+});
