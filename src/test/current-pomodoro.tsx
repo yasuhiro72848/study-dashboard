@@ -29,3 +29,27 @@ export function updateSession(
     session,
   };
 }
+
+export function sessionCounter(currentPomodoro: CurrentPomodoro): number {
+  return currentPomodoro.focusTime * currentPomodoro.session;
+}
+
+export function setFocusTimeMusic(
+  currentPomodoro: CurrentPomodoro,
+  focusMusic: string,
+) {
+  return {
+    ...currentPomodoro,
+    focusMusic,
+  };
+}
+
+export function setBreakMusic(
+  currentPomodoro: CurrentPomodoro,
+  breakMusic: string,
+) {
+  return {
+    ...currentPomodoro,
+    breakMusic,
+  };
+}
