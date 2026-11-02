@@ -177,7 +177,7 @@
 **MonthlyCalendar**
 
 - 役割
-  - ScheduleCalendarとProgressCalenderに共通する月間カレンダー
+  - ScheduleCalendarとProgressCalendarに共通する月間カレンダー
 
 - 状態
   - 状態の所有は親コンポーネントに持たせる。表示と日付選択の提供をする。
@@ -217,10 +217,10 @@
 - 状態
   - 状態は親コンポーネントが管理する。入力値のバリデーション・エラー表示に対応する。
 
-**Select**
+**Checkbox**
 
 - 役割
-  - セレクトボックスの共通UI
+  - チェックボックスの共通UI
 
 - 状態
   - なし
@@ -250,3 +250,17 @@
 3. Schedule / Tasks
 4. Study Log
 5. Pomodoro & Music
+
+## 変更履歴 2026-11-2
+
+タスク管理はチェックボックスのオンオフが通知で足りるため変更した。
+
+- 変更前
+  **Select**
+  - 役割
+    - セレクトボックスの共通UI
+
+- 変更後
+  **Checkbox**
+  - 役割
+    - チェックボックスの共通UI
