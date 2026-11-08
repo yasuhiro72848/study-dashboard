@@ -63,31 +63,38 @@
 - タスクの追加・削除に応じて達成率とプログレスバーをどのように反映するのか。
 - 達成率の計算はTodaysTasks/TaskProgressBarのどちらが担当するのか。
 
-## a
+## TodaysSchedule
 
 **責務(何をするのか)**
 
-- a
+- 今日のスケジュールを表示する。
+- 表示時間範囲の設定を表示する。
 
 **表示(何を受け取り何を返すか)**
 
-- a
+- WeeklyScheduleから設定されたScheduleListとScheduleItemを受け取る。
+- DisplayTimeSettingから表示時間を受け取る。
 
 **Props(必要な要素は何か)**
 
-- a
+- ScheduleList
+  - ScheduleItem
+    - ScheduleTimeBlock
+- ScheduleTimeLine
 
 **状態管理(自身か親か)**
 
-- a
+- 状態管理は親コンポーネントのWeeklyScheduleと、DisplayTimeSettingが管理する
 
 **依存関係(どのコンポーネントと連携するか)**
 
-- a
+- WeeklySchedule
+- DisplayTimeSetting
+- ScheduleList
 
 **未決事項(将来の拡張や決定できないこと)**
 
-- a
+- 将来的にはGoogle Calendarと連携したい。
 
 ## a
 
