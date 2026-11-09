@@ -77,14 +77,17 @@
 
 **Props(必要な要素は何か)**
 
-- ScheduleList
-  - ScheduleItem
-    - ScheduleTimeBlock
-- ScheduleTimeLine
+- TodaysSchedule
+  - ScheduleList
+    - ScheduleItem
+      - ScheduleTimeBlock
+  - ScheduleTimeLine
+  - DisplayTimeSchedule
 
 **状態管理(自身か親か)**
 
-- 状態管理は親コンポーネントのWeeklyScheduleと、DisplayTimeSettingが管理する
+- 今日のスケジュールの状態管理は親コンポーネントのWeeklyScheduleが管理する
+- 表示時間範囲の状態は自身が管理する。
 
 **依存関係(どのコンポーネントと連携するか)**
 
@@ -96,27 +99,36 @@
 
 - 将来的にはGoogle Calendarと連携したい。
 
-## a
+## CurrentProgress
 
 **責務(何をするのか)**
 
-- a
+- 累計完了時間、目標時間、達成率のプログレスバーを表示する。
+- 目標時間を設定する。
 
 **表示(何を受け取り何を返すか)**
 
-- a
+- ProgressHistoryから累計完了時間、目標時間、達成率のデータを受け取り表示する。
+- 設定済みの目標時間を再設定する。
 
 **Props(必要な要素は何か)**
 
-- a
+- CurrentProgress
+  - TotalCompleteTime
+  - GoalTimeSetting
+  - AchievementBar
 
 **状態管理(自身か親か)**
 
-- a
+- 自身が達成率を状態管理をする。
+- 目標時間の設定に応じて達成率を再計算する。
 
 **依存関係(どのコンポーネントと連携するか)**
 
-- a
+- ProgressHistory
+- TotalCompleteTime
+- GoalTimeSetting
+- AchievementBar
 
 **未決事項(将来の拡張や決定できないこと)**
 
