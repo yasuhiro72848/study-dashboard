@@ -4,27 +4,48 @@
 
 **責務(何をするのか)**
 
-- Pomodoroの設定とSpotifyの設定をするページ全体の表示。
+- PomodoroMusicのページ全体の表示。
 
 **表示(何を受け取り何を返すか)**
 
-- a
+- 受け取るデータや状態はなし。
+- 各コンポーネントをPomodoroMusicに配置して表示する。
 
 **Props(必要な要素は何か)**
 
-- a
+- PomodoroSetting
+  - FocusTime
+    - Input
+  - FocusMusic
+    - Select (未確定)
+  - ShortBreak
+    - Input
+  - BreakMusic
+    - Select (未確定)
+  - SessionLaps
+    - Input
+  - TotalCompleteTime
+  - Pomodoro (未確定)
+    - FocusElapsedTime
+    - ShortBreakElapsedTime
+    - CompleteSession
+    - ElapsedTimeBar
+    - SettingButton
+- MusicPlayer
 
 **状態管理(自身か親か)**
 
-- a
+- なし。
 
 **依存関係(どのコンポーネントと連携するか)**
 
-- a
+- CurrentContents
+- PomodoroSetting
+- MusicPlayer
 
 **未決事項(将来の拡張や決定できないこと)**
 
-- a
+- なし。
 
 ## PomodoroSetting
 

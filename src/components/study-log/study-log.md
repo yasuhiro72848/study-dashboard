@@ -1,5 +1,53 @@
 # StudyLog
 
+## StudyLog
+
+**責務(何をするのか)**
+
+- StudyLogのコンテンツを表示する。
+
+**表示(何を受け取り何を返すか)**
+
+- 受け取るデータや状態はなし。
+- 各コンポーネントをStudyLogに配置して表示する。
+
+**Props(必要な要素は何か)**
+
+- WeeklyProgress
+  - AchievementBarChart
+  - CompleteTimeBarChart
+  - AverageTimeBarChart
+  - WeeklyCompleteTime
+  - WeeklyAverageTime
+  - DisplayDaySetting
+- ProgressHistory
+  - DailyProgress
+    - TotalCompleteTime
+    - GoalTimeSetting
+      - Input
+    - AchievementBar
+    - DailyCondition
+      - Input
+    - DailyMemo
+      - Input
+    - SettingButton
+  - ProgressCalendar
+    - MonthlyCalendar
+
+**状態管理(自身か親か)**
+
+- なし
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- CurrentContents
+- WeeklyProgress
+- ProgressHistory
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- なし
+
 ## WeeklyProgress
 
 **責務(何をするのか)**

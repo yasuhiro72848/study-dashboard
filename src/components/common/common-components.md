@@ -1,5 +1,174 @@
 # Common Components
 
+## PageLayout
+
+**責務(何をするのか)**
+
+- アプリ全体の共通レイアウトを表示する。
+- HeaderとMainContentsを表示する。
+
+**表示(何を受け取り何を返すか)**
+
+- 各親コンポーネントから要素を受け取る。
+- 受け取った各要素をPageLayoutに配置する。
+
+**Props(必要な要素は何か)**
+
+- 共通スタイル
+- PageLayout
+  - Header
+    - NavMenu
+  - MainContents
+    - DateAndTime
+    - CurrentContents
+      - Dashboard
+      - ScheduleTasks
+      - StudyLog
+      - PomodoroMusic
+
+**状態管理(自身か親か)**
+
+- 現在のページ
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- Header
+- MainContests
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- 共通スタイルの設定項目。
+
+## Header
+
+**責務(何をするのか)**
+
+- ヘッダーの表示領域を提供する。
+
+**表示(何を受け取り何を返すか)**
+
+- 親コンポーネントから要素を受け取り表示する。
+- NavMenuのページの変更イベントを中継し親に通知する。
+
+**Props(必要な要素は何か)**
+
+- 共通スタイルが必要な場合は設定する。
+- Header
+  - NavMenu
+
+**状態管理(自身か親か)**
+
+- なし。
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- NavMenu
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- MVPではNavMenuのみを実装予定。
+- 将来的な拡張性を考慮してHeaderコンポーネントを実装している。
+
+## NavMenu
+
+**責務(何をするのか)**
+
+- ページの遷移をするためのナビゲーションメニュー
+
+**表示(何を受け取り何を返すか)**
+
+- PageLayoutから現在のページ状態を受け取る。
+- ページ切り替えの変更イベントを通知する。
+- ナビゲーションメニューを表示する。
+
+**Props(必要な要素は何か)**
+
+- ページ変更イベント
+- 現在のページ状態やURLパラメータ
+- CSSスタイル
+
+**状態管理(自身か親か)**
+
+- なし。
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- Header
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- ページ遷移の実装方法。React Routerを予定している。
+
+## MainContents
+
+**責務(何をするのか)**
+
+- メインコンテンツの表示領域を提供する。
+
+**表示(何を受け取り何を返すか)**
+
+- 各コンポーネントをMainContentsに配置して表示する。
+
+**Props(必要な要素は何か)**
+
+- MainContents
+  - DateAndTime
+  - CurrentContents
+    - Dashboard
+    - ScheduleTasks
+    - StudyLog
+    - PomodoroMusic
+
+**状態管理(自身か親か)**
+
+- なし。
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- PageLayout
+- DateAndTime
+- CurrentContents
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- なし。
+
+## CurrentContents
+
+**責務(何をするのか)**
+
+- 現在のページに応じたコンテンツを表示をする。
+
+**表示(何を受け取り何を返すか)**
+
+- PageLayoutから現在のページ状態を受け取る。
+- 現在のページ状態に応じたコンテンツを表示する。
+
+**Props(必要な要素は何か)**
+
+- 現在のページ状態
+- CurrentContents
+  - Dashboard
+  - ScheduleTasks
+  - StudyLog
+  - PomodoroMusic
+
+**状態管理(自身か親か)**
+
+- なし。
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- MainContents
+- Dashboard
+- ScheduleTasks
+- StudyLog
+- PomodoroMusic
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- なし。
+
 ## Card
 
 **責務(何をするのか)**

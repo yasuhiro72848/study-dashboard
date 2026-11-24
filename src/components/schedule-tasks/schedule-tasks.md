@@ -1,5 +1,49 @@
 # Schedule Tasks
 
+## ScheduleTasks
+
+**責務(何をするのか)**
+
+- ScheduleTasksのコンテンツを表示する。
+
+**表示(何を受け取り何を返すか)**
+
+- 受け取るデータや状態はなし。
+- 各コンポーネントをScheduleTasksに配置して表示する。
+
+**Props(必要な要素は何か)**
+
+- ScheduleTasks
+  - WeeklySchedule
+    - ScheduleList
+      - ScheduleItem
+        - ScheduleTimeBlock
+    - ScheduleTimeLine
+    - DisplayTimeSetting
+    - ScheduleCalendar
+      - MonthlyCalendar
+  - TaskSettings
+    - TaskList
+      - TaskItem
+    - AddTaskForm
+      - Input
+    - SettingButton
+  - DateAndTime
+
+**状態管理(自身か親か)**
+
+- なし。
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- CurrentContents
+- WeeklySchedule
+- TaskSettings
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- なし。
+
 ## WeeklySchedule
 
 **責務(何をするのか)**

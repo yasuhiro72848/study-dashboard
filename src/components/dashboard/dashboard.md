@@ -1,5 +1,60 @@
 # Dashboard
 
+## DashBoard
+
+**責務(何をするのか)**
+
+- Dashboardページのコンテンツを表示する。
+
+**表示(何を受け取り何を返すか)**
+
+- 受け取るデータや状態はなし。
+- 各コンポーネントをDashboardに配置して表示する。
+
+**Props(必要な要素は何か)**
+
+- Dashboard
+  - TodaysTasks
+    - TaskList
+    - TaskItem
+    - TaskProgressBar
+  - TodaysSchedule
+    - ScheduleList
+      - ScheduleItem
+        - ScheduleTimeBlock
+    - ScheduleTimeLine
+    - DisplayTimeSchedule
+  - CurrentProgress
+    - TotalCompleteTime
+    - GoalTimeSetting
+    - AchievementBar
+  - Pomodoro
+    - FocusElapsedTime
+    - ShortBreakElapsedTime
+    - CompleteSession
+    - ElapsedTimeBar
+    - SettingButton
+  - Music
+    - MediaControls
+    - MediaBar
+
+**状態管理(自身か親か)**
+
+- なし。
+
+**依存関係(どのコンポーネントと連携するか)**
+
+- CurrentContents
+- TodayTasks
+- TodaySchedule
+- CurrentProgress
+- Pomodoro
+- Music
+
+**未決事項(将来の拡張や決定できないこと)**
+
+- なし。
+
 ## TodaysTasks
 
 **責務(何をするのか)**
