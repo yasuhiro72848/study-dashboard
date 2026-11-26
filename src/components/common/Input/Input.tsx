@@ -1,3 +1,5 @@
+import styles from './Input.module.css';
+
 type TextInputProps = {
   type: 'text';
   value: string;
@@ -23,6 +25,7 @@ export default function Input(props: InputProps) {
     return (
       <input
         type="text"
+        className={styles.textInput}
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
       />
@@ -32,16 +35,22 @@ export default function Input(props: InputProps) {
     return (
       <input
         type="number"
+        className={styles.numberInput}
         value={props.value}
         onChange={(e) => props.onChange(Number(e.target.value))}
       />
     );
   }
-  return (
-    <input
-      type="date"
-      value={props.value}
-      onChange={(e) => props.onChange(e.target.value)}
-    />
-  );
+  if (props.type === 'date') {
+    return (
+      <input
+        type="date"
+        className={styles.dateInput}
+        value={props.value}
+        onChange={(e) => props.onChange(e.target.value)}
+      />
+    );
+  }
+  const exhaustiveCheck: never = props;
+  return exhaustiveCheck;
 }
