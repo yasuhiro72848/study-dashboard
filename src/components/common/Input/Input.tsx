@@ -18,7 +18,17 @@ type DateInputProps = {
   onChange: (value: string) => void;
 };
 
-type InputProps = TextInputProps | NumberInputProps | DateInputProps;
+type CheckboxInputProps = {
+  type: 'checkbox';
+  checked: boolean;
+  onChange: (value: boolean) => void;
+};
+
+type InputProps =
+  | TextInputProps
+  | NumberInputProps
+  | DateInputProps
+  | CheckboxInputProps;
 
 export default function Input(props: InputProps) {
   if (props.type === 'text') {
@@ -31,6 +41,7 @@ export default function Input(props: InputProps) {
       />
     );
   }
+
   if (props.type === 'number') {
     return (
       <input
@@ -41,6 +52,7 @@ export default function Input(props: InputProps) {
       />
     );
   }
+
   if (props.type === 'date') {
     return (
       <input
@@ -51,6 +63,18 @@ export default function Input(props: InputProps) {
       />
     );
   }
+
+  if (props.type === 'checkbox') {
+    return (
+      <input
+        type="checkbox"
+        className={styles.checkboxInput}
+        checked={props.checked}
+        onChange={(e) => props.onChange(e.target.checked)}
+      />
+    );
+  }
+
   const exhaustiveCheck: never = props;
   return exhaustiveCheck;
 }
